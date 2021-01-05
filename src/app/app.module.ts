@@ -7,6 +7,32 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { HomeComponent } from './home/home.component';
 import { ShipsComponent } from './ships/ships.component';
 import { ShipComponent } from './ships/ship/ship.component';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: '/home',
+  },
+  {
+    path: 'home',
+    component: HomeComponent,
+  },
+  {
+    path: 'signin',
+    component: SignInComponent,
+  },
+  {
+    path: 'signup',
+    component: SignUpComponent,
+  },
+  {
+    path: 'ships',
+    component: ShipsComponent,
+  },
+];
+
 
 @NgModule({
   declarations: [
@@ -15,12 +41,10 @@ import { ShipComponent } from './ships/ship/ship.component';
     SignUpComponent,
     HomeComponent,
     ShipsComponent,
-    ShipComponent
+    ShipComponent,
   ],
-  imports: [
-    BrowserModule
-  ],
+  imports: [BrowserModule, RouterModule.forRoot(routes)],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
