@@ -1,1 +1,8 @@
-<p>ships works!</p>
+<div>
+    <ul *ngFor="let ship of ships">
+        <li>{{ship.name}}</li>
+    </ul>
+</div>
+
+<button (click)=onFetchLink(previousUrl)>{{previousUrl}}</button>
+<button (click)=onFetchLink(nextUrl)>{{nextUrl}}</button>

@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { ShipsComponent } from './ships/ships.component';
 import { ShipComponent } from './ships/ship/ship.component';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   {
@@ -43,7 +44,7 @@ const routes: Routes = [
     ShipsComponent,
     ShipComponent,
   ],
-  imports: [BrowserModule, RouterModule.forRoot(routes)],
+  imports: [BrowserModule, RouterModule.forRoot(routes), HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
