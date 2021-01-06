@@ -1,8 +1,8 @@
-<div class="backdrop">
+<div *ngIf="ship">
   <div class="ship-details">
     <div class="level-class">
       <div class="model-image">
-        <img src="{{ ship.image }}" />
+        <img src="{{ onFetchImageLink(ship.url) }}" onerror="this.src='assets/images/no-picture.png'" />
       </div>
       <div class="capacity-details">
         <span class="title-span">Capacity details</span>

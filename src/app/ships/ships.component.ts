@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ModalService } from '../services/modal.service';
 import { ShipsService } from '../services/ships.service';
 
 @Component({
@@ -7,10 +8,11 @@ import { ShipsService } from '../services/ships.service';
   styleUrls: ['./ships.component.scss'],
 })
 export class ShipsComponent implements OnInit {
+  @Input() ship: any; 
   ships = [];
   nextUrl: string;
   previousUrl: string;
-  constructor(private shipsService: ShipsService) {}
+  constructor(private shipsService: ShipsService, private modalService: ModalService) {}
 
   ngOnInit(): void {
     this.shipsService.$shipsChanged.subscribe((response: any) => {
@@ -25,16 +27,16 @@ export class ShipsComponent implements OnInit {
     this.shipsService.fetchLink(url);
   }
 
-  getShipId(url) {
-    const id = url
-      .split('/')
-      .filter((item) => {
-        return item !== '';
-      })
-      .slice(-1)[0];
-
-    let baseUrl = `https://starwars-visualguide.com/assets/img/starships/${id}.jpg`;
-
-    return baseUrl;
+  onShowShipInfo(ship){
+    this.ship = ship; 
+    this.modalService.toggleModal();
   }
+
+  onFetchImageLink(url) {
+    return this.shipsService.fetchImageLink(url)
+  }
+
+  // onFetchImageLink(url){
+  //   this.shipsService.fetchImageLink(url)
+  // }
 }

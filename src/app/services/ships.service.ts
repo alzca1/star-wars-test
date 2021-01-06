@@ -36,4 +36,17 @@ export class ShipsService {
     }
     this.getShips(url);
   }
+
+  fetchImageLink(url){
+    const id = url
+    .split('/')
+    .filter((item) => {
+      return item !== '';
+    })
+    .slice(-1)[0];
+
+  let baseUrl = `https://starwars-visualguide.com/assets/img/starships/${id}.jpg`;
+
+  return baseUrl;
+  }
 }

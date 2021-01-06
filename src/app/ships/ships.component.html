@@ -1,14 +1,17 @@
+
 <div id="ships">
   <h1>Ships</h1>
+  <app-modal>
+    <app-ship [ship]="ship"></app-ship>
+  </app-modal>
   <div class="ships-container">
-    <div *ngFor="let ship of ships" class="ship-basic">
-        
-      <div class="ship-header">
+    <div *ngFor="let ship of ships" class="ship-basic" (click)="onShowShipInfo(ship)">
+      <div class="ship-header" >
         <h5>{{ ship.name }}</h5>
       </div>
       <div class="ship-image">
         <img
-          src="{{ getShipId(ship.url) }}"
+          src="{{ onFetchImageLink(ship.url) }}"
           onerror="this.src='assets/images/no-picture.png'"
         />
       </div>
