@@ -16,21 +16,24 @@ export class ShipsService {
       baseUrl = url;
     }
     let blockPage = baseUrl.split('=')[1];
-    return this.http.get(baseUrl).subscribe((response) => {
-      this.ships.push({ ...response, page: blockPage });
-      this.$shipsChanged.next(response);
-    });
+    return this.http.get(baseUrl).subscribe(
+      (response) => {
+        this.ships.push({ ...response, page: blockPage });
+        this.$shipsChanged.next(response);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   fetchLink(url) {
     const page = url.split('=')[1];
     for (let block of this.ships) {
       if (block.page === page) {
-        console.log(this.ships)
         return this.$shipsChanged.next(block);
       }
     }
-     this.getShips(url);
-     console.log(this.ships)
+    this.getShips(url);
   }
 }

@@ -1,8 +1,11 @@
 <div>
     <ul *ngFor="let ship of ships">
+        <img src="{{getShipId(ship.url)}}" onerror="this.src='assets/images/no-picture.png'" />
         <li>{{ship.name}}</li>
     </ul>
 </div>
 
 <button (click)=onFetchLink(previousUrl)>{{previousUrl}}</button>
 <button (click)=onFetchLink(nextUrl)>{{nextUrl}}</button>
+
+
