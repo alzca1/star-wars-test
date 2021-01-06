@@ -32,6 +32,11 @@ const routes: Routes = [
     path: 'ships',
     component: ShipsComponent,
   },
+
+  {
+    path: 'ship', 
+    component: ShipComponent
+  }
 ];
 
 

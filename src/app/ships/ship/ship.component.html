@@ -1,1 +1,31 @@
-<p>ship works!</p>
+<div class="backdrop">
+  <div class="ship-details">
+    <div class="level-class">
+      <div class="model-image">
+        <img src="{{ ship.image }}" />
+      </div>
+      <div class="capacity-details">
+        <span class="title-span">Capacity details</span>
+        <span class="key-span">Crew: <span class="value-span">{{ ship.crew }}</span></span>
+        <span class="key-span">Passengers: <span class="value-span">{{ ship.passengers }}</span></span>
+        <span class="key-span">Cargo Capacity: <span class="value-span">{{ ship.cargo_capacity }}</span></span>
+        <span class="key-span">Consumables: <span class="value-span">{{ ship.consumables }}</span></span>
+      </div>
+    </div>
+    <div class="level-class">
+      <div class="model-details">
+        <span class="title-span">Model details</span>
+        <span class="key-span">Name: <span class="value-span">{{ ship.name }}</span></span>
+        <span class="key-span">Model: <span class="value-span">{{ ship.model }}</span></span>
+        <span class="key-span">Manufacturer: <span class="value-span">{{ ship.manufacturer }}</span></span>
+        <span class="key-span">Starship Class: <span class="value-span">{{ ship.starship_class }}</span></span>
+      </div>
+
+      <div class="speed-details">
+        <span class="title-span">Speed details</span>
+        <span class="key-span">Hyperdrive Rating: <span class="value-span">{{ ship.hyperdrive_rating }}</span></span>
+        <span class="key-span">MGLT: <span class="value-span">{{ ship.MGLT }}</span></span>
+      </div>
+    </div>
+  </div>
+</div>
