@@ -17,6 +17,7 @@ export class ShipsComponent implements OnInit {
       this.ships = response.results;
       this.nextUrl = response.next;
       this.previousUrl = response.previous;
+      console.log(this.nextUrl, this.previousUrl)
     });
   }
 

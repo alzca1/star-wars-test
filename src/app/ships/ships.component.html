@@ -1,11 +1,28 @@
-<div>
-    <ul *ngFor="let ship of ships">
-        <img src="{{getShipId(ship.url)}}" onerror="this.src='assets/images/no-picture.png'" />
-        <li>{{ship.name}}</li>
-    </ul>
+<div id="ships">
+  <h1>Ships</h1>
+  <div class="ships-container">
+    <div *ngFor="let ship of ships" class="ship-basic">
+      <div class="ship-header">
+        <h5>{{ ship.name }}</h5>
+      </div>
+      <div class="ship-image">
+        <img
+          src="{{ getShipId(ship.url) }}"
+          onerror="this.src='assets/images/no-picture.png'"
+        />
+      </div>
+    </div>
+  </div>
+  <button
+    [disabled]="previousUrl === null ? true : false"
+    (click)="onFetchLink(previousUrl)"
+  >
+    Previous
+  </button>
+  <button
+    [disabled]="nextUrl === null ? true : false"
+    (click)="onFetchLink(nextUrl)"
+  >
+    Next
+  </button>
 </div>
-
-<button (click)=onFetchLink(previousUrl)>{{previousUrl}}</button>
-<button (click)=onFetchLink(nextUrl)>{{nextUrl}}</button>
-
-
