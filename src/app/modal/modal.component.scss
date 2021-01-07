@@ -4,5 +4,30 @@
     top: 0; 
     right: 0; 
     bottom: 0; 
-    left: 0; 
+    left: 0;    
+}
+
+.modal-background {
+    z-index: 100; 
+    position: fixed; 
+    top: 0; 
+    right: 0; 
+    bottom: 0; 
+    left: 0;
+    background-color: black;
+    opacity: 0.75;
+    z-index: 99;
+    backdrop-filter: blur(2px);
+}
+
+.modal-blur{
+    z-index: 100; 
+    position: fixed; 
+    top: 0; 
+    right: 0; 
+    bottom: 0; 
+    left: 0;
+    opacity: 0.25;
+    z-index: 98;
+    backdrop-filter: blur(3px);
 }
