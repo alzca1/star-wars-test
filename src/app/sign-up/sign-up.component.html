@@ -1,7 +1,7 @@
 <div id="sign-up">
   <div class="form-container">
     <h1>Sign Up</h1>
-    <form [formGroup]="signUpForm">
+    <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
       <div formGroupName="userData">
         <div class="input-container">
           <label for="name">Name</label>
@@ -70,7 +70,7 @@
       </div>
       <div class="buttons-container">
         <button
-          [disabled]="signInForm.status == 'INVALID' ? true : false"
+          [disabled]="signUpForm.status == 'INVALID' ? true : false"
           type="submit"
         >
           Submit
@@ -81,4 +81,3 @@
   </div>
 </div>
 
-<!-- [disabled]="signUpForm.status == 'INVALID'? true: false" -->

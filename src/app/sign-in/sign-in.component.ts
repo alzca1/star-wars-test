@@ -18,4 +18,9 @@ export class SignInComponent implements OnInit {
       }),
     });
   }
+
+  onSubmit(){
+    console.log(this.signInForm);
+    this.signInForm.reset();
+  }
 }

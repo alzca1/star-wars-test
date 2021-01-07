@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UserLocalStorageService } from '../services/user-local-storage.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -8,7 +9,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class SignUpComponent implements OnInit {
   signUpForm: FormGroup;
-  constructor() {}
+  constructor(private UserLocalStorageService: UserLocalStorageService ) {}
 
   ngOnInit(): void {
     this.signUpForm = new FormGroup({
@@ -28,9 +29,12 @@ export class SignUpComponent implements OnInit {
     return this.signUpForm.hasError('name') ? 'Not a valid email' : '';
   }
 
-  logForm(){
-    console.log(this.signUpForm.status);
+  onSubmit(){
+   const user = this.signUpForm.value.userData; 
+   console.log(user)
+    this.UserLocalStorageService.createUser(user)
+    this.signUpForm.reset(); 
   }
 
-  
+
 }
