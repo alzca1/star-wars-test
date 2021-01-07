@@ -1,4 +1,16 @@
 <div id="sign-up">
+  <div
+    [class.success]="existentUserMessage === 'valid'"
+    [class.error]="existentUserMessage === 'invalid'"
+    [class.message-container]="existentUserMessage"
+    *ngIf="existentUserMessage"
+  >
+    <span>{{ message }}</span>
+    <a (click)="clearErrorMessage()">Close</a>
+  </div>
+  <div class="success-message-container" *ngIf="succesfulRegistration">
+    <span>{{ successfulRegistration }}</span>
+  </div>
   <div class="form-container">
     <h1>Sign Up</h1>
     <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
@@ -80,4 +92,3 @@
     </form>
   </div>
 </div>
-

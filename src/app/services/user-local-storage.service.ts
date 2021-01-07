@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserLocalStorageService {
+
+  
+  $existentUserMessage = new Subject<string>(); 
   constructor() {}
 
   createUser(user) {
@@ -12,8 +16,10 @@ export class UserLocalStorageService {
     if (!this.getByEmail(user.email)) {
       users.push({ ...user, id: this.getId() });
       users = JSON.stringify(users);
+      this.$existentUserMessage.next('valid')
       return localStorage.setItem('users', users);
     }
+    this.$existentUserMessage.next('invalid')
   }
 
   updateUser(updatedUser) {
