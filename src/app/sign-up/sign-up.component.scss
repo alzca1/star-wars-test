@@ -1,0 +1,75 @@
+#sign-up {
+  width: 100vw;
+  height: 100vh;
+  padding: 1vw;
+}
+
+#sign-up .form-container {
+  display: flex;
+  width: 300px;
+  margin: 35px auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#sign-up .input-container {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 290px;
+  padding: 10px 0;
+}
+
+#sign-up .input-container input {
+  height: 35px;
+  padding-left: 5px;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  outline: none;
+  transition: .175s ease-in;
+}
+
+#sign-up .input-container input:focus {
+  border: 1px solid #66AFE9;
+  box-shadow: 1px 1px 10px 1px #66aee959;
+//   box-shadow: 1px 1px 10px 1px #66AFE9;
+}
+
+#sign-up .input-container small{
+    position: absolute; 
+    bottom: -9px; 
+    left: 5px; 
+    color: red; 
+    font-weight: 600;
+}
+
+#sign-up .buttons-container{
+    margin: 25px 0;
+    
+}
+
+#sign-up .buttons-container a {
+    padding: 0 15px; 
+}
+
+#sign-up .buttons-container button {
+    width: 90px;
+    padding: 8px 15px; 
+    border-radius: 7px; 
+    background-color: #565656; 
+    color: white;
+    outline: none;
+    border: none; 
+    transition: background-color 0.3s linear;
+}
+#sign-up .buttons-container button:hover {
+    background-color: #5C5C5C;
+}
+
+
+#sign-up .buttons-container button:disabled {
+    color: grey; 
+    background-color: rgb(250, 250, 250) ;
+}
+

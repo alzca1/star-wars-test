@@ -1,4 +1,80 @@
-<div class="signup-container">
-    <h1>Sign Up</h1>
-
+<div id="sign-up">
+    <div class="form-container">
+      <h1>Sign Up</h1>
+    <form [formGroup]="signUpForm">
+      <div formGroupName="userData">
+        <div class="input-container">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            class="form-control"
+            formControlName="name"
+          />
+          <small
+            *ngIf="
+              !signUpForm.get('userData').get('name').valid &&
+              signUpForm.get('userData').get('name').touched
+            "
+            >Please, provide a name</small
+          >
+        </div>
+        <div class="input-container">
+          <label for="surname">Surname</label>
+          <input
+            type="text"
+            id="surname"
+            class="form-control"
+            formControlName="surname"
+          />
+          <small
+            *ngIf="
+              !signUpForm.get('userData').get('surname').valid &&
+              signUpForm.get('userData').get('surname').touched
+            "
+            >Please, provide a surname</small
+          >
+        </div>
+        <div class="input-container">
+          <label for="email">E-mail</label>
+          <input
+            type="email"
+            id="email"
+            class="form-control"
+            formControlName="email"
+          />
+          <small
+            *ngIf="
+              !signUpForm.get('userData').get('email').valid &&
+              signUpForm.get('userData').get('email').touched
+            "
+            >Please, provide a valid e-mail</small
+          >
+        </div>
+        <div class="input-container">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            formControlName="password"
+          />
+          <small
+            *ngIf="
+              !signUpForm.get('userData').get('password').valid &&
+              signUpForm.get('userData').get('password').touched
+            "
+            >Please, provide a password</small
+          >
+        </div>
+      </div>
+      <div class="buttons-container">
+          <button type="submit">Submit</button>
+        <a (click)="logForm()" >Cancel</a>
+      </div>
+    </form>
+  </div>
 </div>
+
+
+<!-- [disabled]="signUpForm.status == 'INVALID'? true: false" -->

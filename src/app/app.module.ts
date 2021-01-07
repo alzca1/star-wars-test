@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 import { AppComponent } from './app.component';
 import { SignInComponent } from './sign-in/sign-in.component';
@@ -11,6 +13,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalComponent } from './modal/modal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -52,7 +55,7 @@ const routes: Routes = [
     ShipComponent,
     ModalComponent,
   ],
-  imports: [BrowserModule, RouterModule.forRoot(routes), HttpClientModule, BrowserAnimationsModule],
+  imports: [BrowserModule, RouterModule.forRoot(routes), HttpClientModule, BrowserAnimationsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
