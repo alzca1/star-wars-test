@@ -1,6 +1,6 @@
 <div id="sign-up">
-    <div class="form-container">
-      <h1>Sign Up</h1>
+  <div class="form-container">
+    <h1>Sign Up</h1>
     <form [formGroup]="signUpForm">
       <div formGroupName="userData">
         <div class="input-container">
@@ -69,12 +69,16 @@
         </div>
       </div>
       <div class="buttons-container">
-          <button type="submit">Submit</button>
-        <a (click)="logForm()" >Cancel</a>
+        <button
+          [disabled]="signInForm.status == 'INVALID' ? true : false"
+          type="submit"
+        >
+          Submit
+        </button>
+        <a routerLink="/signin">Cancel</a>
       </div>
     </form>
   </div>
 </div>
-
 
 <!-- [disabled]="signUpForm.status == 'INVALID'? true: false" -->

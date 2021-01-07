@@ -1,1 +1,52 @@
-<p>sign-in works!</p>
+<div id="sign-in">
+  <div class="form-container">
+    <h1>Sign In</h1>
+    <form [formGroup]="signInForm">
+      <div formGroupName="userData">
+        <div class="input-container">
+          <label for="email">E-mail</label>
+          <input
+            type="email"
+            id="email"
+            class="form-control"
+            formControlName="email"
+          />
+          <small
+            *ngIf="
+              !signInForm.get('userData').get('email').valid &&
+              signInForm.get('userData').get('email').touched
+            "
+            >Please, provide a valid e-mail</small
+          >
+        </div>
+        <div class="input-container">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            formControlName="password"
+          />
+          <small
+            *ngIf="
+              !signInForm.get('userData').get('password').valid &&
+              signInForm.get('userData').get('password').touched
+            "
+            >Please, provide a password</small
+          >
+        </div>
+      </div>
+      <div class="buttons-container">
+        <button
+          [disabled]="signInForm.status == 'INVALID' ? true : false"
+          type="submit"
+        >
+          Submit
+        </button>
+        <a routerLink="/signup">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- [disabled]="signInForm.status == 'INVALID'? true: false" -->
