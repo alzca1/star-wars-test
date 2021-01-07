@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { CookieService } from 'ngx-cookie-service';
+
+
 
 import { AppComponent } from './app.component';
 import { SignInComponent } from './sign-in/sign-in.component';
@@ -56,7 +59,7 @@ const routes: Routes = [
     ModalComponent,
   ],
   imports: [BrowserModule, RouterModule.forRoot(routes), HttpClientModule, BrowserAnimationsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
