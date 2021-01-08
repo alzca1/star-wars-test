@@ -49,7 +49,7 @@ export class SignInComponent implements OnInit {
   handleSignInMessage(status){
     switch(status){
       case 'invalid': 
-      this.message = 'Error: Either your username or password was incorrect'; 
+      this.message = 'Error: Either your username or password was incorrect or there is no such user registered'; 
       this.clearErrorMessage();
       break; 
       case 'valid': 

@@ -20,6 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthGuardService } from './services/auth-guard.service';
 import { NewShipComponent } from './ships/new-ship/new-ship.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ResolverService } from './services/resolver.service';
 
 const routes: Routes = [
   {
@@ -43,6 +44,7 @@ const routes: Routes = [
     path: 'ships',
     canActivate: [AuthGuardService],
     component: ShipsComponent,
+    resolve: { resolve: ResolverService },
   },
 
   {
@@ -76,7 +78,16 @@ const routes: Routes = [
     MatInputModule,
     ReactiveFormsModule,
   ],
-  providers: [{provide:HTTP_INTERCEPTORS, useClass:CachingInterceptorService, multi:true},CookieService, AuthGuardService, ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CachingInterceptorService,
+      multi: true,
+    },
+    CookieService,
+    AuthGuardService,
+    ResolverService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

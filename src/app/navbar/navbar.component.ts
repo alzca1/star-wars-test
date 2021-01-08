@@ -8,12 +8,15 @@ import { AuthenticationService } from '../services/authentication.service';
 })
 export class NavbarComponent implements OnInit {
   loginStatus: boolean; 
-  constructor(private authenticationService: AuthenticationService) { }
+  constructor(private authenticationService: AuthenticationService) {
+    this.authenticationService.$loginStatus.subscribe(status => {
+      status == 'valid'?  this.loginStatus = true : false;  
+    })
+   }
 
   ngOnInit(): void {
-    this.authenticationService.$loginStatus.subscribe(status => {
-      status === 'valid' ? this.loginStatus = true: this.loginStatus = false;  
-    })
+    console.log('ngOnInit')
+    
   }
 
   checkLoggedIn(){

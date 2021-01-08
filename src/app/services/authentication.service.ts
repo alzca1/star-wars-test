@@ -29,21 +29,28 @@ export class AuthenticationService {
 
   login(email, password) {
     const users = this.userLocalStorageService.getUsers();
+    if (!users.length) {
+      this.$loginStatus.next('invalid');
+      return;
+    }
+
     for (let user of users) {
-      if (user !== null && user.password === password) {
+      if (user.email === email && user.password === password) {
         this.isAuthenticated = true;
         this.$loginStatus.next('valid');
         this.setCredentials(email, password);
-        console.log('valid');
-      } else {
-        this.$loginStatus.next('invalid');
-        console.log('invalid');
+        return;
       }
     }
+    this.$loginStatus.next('invalid');
   }
 
   checkLoggedIn() {
-    let authData = this.getCurrentUser(); 
+    let authData = this.getCurrentUser();
+    if (!authData.length) {
+      this.$loginStatus.next('invalid');
+      return false;
+    }
     const users = this.userLocalStorageService.getUsers();
     for (let user of users) {
       if (
@@ -51,21 +58,20 @@ export class AuthenticationService {
         user.email === authData[0] &&
         user.password === authData[1]
       ) {
-        console.log('user authenticated!')
+        this.$loginStatus.next('valid');
         return true;
       }
     }
-    return false; 
   }
 
-  getCurrentUser(){
-    const authData = atob(this.cookieService.get('currentUser')).split(":"); 
-    return authData; 
+  getCurrentUser() {
+    const authData = atob(this.cookieService.get('currentUser')).split(':');
+    return authData;
   }
 
-  removeCredentials(){
-    this.cookieService.delete('currentUser');
-    this.$loginStatus.next('invalid')
-    this.router.navigate(['/'])
+  removeCredentials() {
+    this.$loginStatus.next('invalid');
+    this.cookieService.deleteAll('/');
+    this.router.navigateByUrl('');
   }
 }
