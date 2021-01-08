@@ -7,9 +7,6 @@
   >
     <span>{{ message }}</span>
   </div>
-  <div class="success-message-container" *ngIf="succesfulRegistration">
-    <span>{{ successfulRegistration }}</span>
-  </div>
   <div class="form-container">
     <h1>Sign Up</h1>
     <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">

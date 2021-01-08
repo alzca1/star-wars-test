@@ -8,13 +8,16 @@ import { UserLocalStorageService } from './user-local-storage.service';
   providedIn: 'root',
 })
 export class AuthenticationService {
-
   isAuthenticated: boolean;
-  $loginStatus = new Subject()
-  $wasAuthenticated
+  $loginStatus = new Subject<string>();
+  $wasAuthenticated;
 
-  constructor(private router: Router, private cookieService: CookieService, private userLocalStorageService: UserLocalStorageService) {
-    this.isAuthenticated = false; 
+  constructor(
+    private router: Router,
+    private cookieService: CookieService,
+    private userLocalStorageService: UserLocalStorageService
+  ) {
+    this.isAuthenticated = false;
   }
 
   setCredentials(email, password) {
@@ -24,16 +27,34 @@ export class AuthenticationService {
     this.cookieService.set('currentUser', authData, cookieExp);
   }
 
-  login(email, password){
+  login(email, password) {
     const users = this.userLocalStorageService.getUsers();
-    for(let user of users){
-      if(user !== null && user.password === password){
-        this.isAuthenticated = true; 
-        this.$loginStatus.next('valid')
-        this.setCredentials(email, password)
-        this.router.navigate(['/ships'])
-      }
+    for (let user of users) {
+      if (user !== null && user.password === password) {
+        this.isAuthenticated = true;
+        this.$loginStatus.next('valid');
+        this.setCredentials(email, password);
+        console.log('valid');
+      } else {
         this.$loginStatus.next('invalid');
+        console.log('invalid');
+      }
     }
+  }
+
+  checkLoggedIn() {
+    const authData = atob(this.cookieService.get('currentUser')).split(':');
+    const users = this.userLocalStorageService.getUsers();
+    for (let user of users) {
+      if (
+        user !== null &&
+        user.email === authData[0] &&
+        user.password === authData[1]
+      ) {
+        console.log('user authenticated!')
+        return true;
+      }
+    }
+    
   }
 }

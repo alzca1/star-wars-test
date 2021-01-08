@@ -1,4 +1,12 @@
 <div id="sign-in">
+    <div
+    [class.success]="loginStatusMessage === 'valid'"
+    [class.error]="loginStatusMessage === 'invalid'"
+    [class.message-container]="loginStatusMessage"
+    *ngIf="loginStatusMessage"
+  >
+    <span>{{ message }}</span>
+  </div>
   <div class="form-container">
     <h1>Sign In</h1>
     <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
@@ -43,7 +51,7 @@
         >
           Submit
         </button>
-        <a routerLink="/signup">Cancel</a>
+        <a routerLink="/signup">Sign Up</a>
       </div>
     </form>
   </div>

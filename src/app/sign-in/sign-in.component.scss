@@ -3,6 +3,41 @@
     height: 100vh;
     padding: 1vw;
   }
+
+
+  #sign-in .message-container{
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    width: 100%; 
+    height: 40px; 
+    
+    position: absolute;
+    top: 0; 
+    left: 0;
+  }
+  
+   .success{
+    background-color: #2a9d8f;
+  }
+  
+   .error{
+    background-color: #e63946;
+  }
+  
+  #sign-in .message-container span{
+    font-size: 1rem; 
+    font-weight: 600; 
+    color: white; 
+  }
+  
+  #sign-in .message-container a{
+    font-size: .78rem; 
+    font-weight: 600; 
+    margin: 0 10px;
+    text-decoration: underline;
+    cursor: pointer; 
+  }
   
   #sign-in .form-container {
     display: flex;

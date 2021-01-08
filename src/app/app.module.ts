@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ModalComponent } from './modal/modal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AuthGuardService } from './services/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -38,6 +39,7 @@ const routes: Routes = [
   },
   {
     path: 'ships',
+    canActivate: [AuthGuardService],
     component: ShipsComponent,
   },
 
@@ -59,7 +61,7 @@ const routes: Routes = [
     ModalComponent,
   ],
   imports: [BrowserModule, RouterModule.forRoot(routes), HttpClientModule, BrowserAnimationsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule],
-  providers: [CookieService],
+  providers: [CookieService, AuthGuardService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

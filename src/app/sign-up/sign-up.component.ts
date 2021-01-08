@@ -33,8 +33,6 @@ export class SignUpComponent implements OnInit {
     });
   }
 
-  getErrorMessage() {}
-
   onSubmit() {
     const user = this.signUpForm.value.userData;
     if (this.message == 'valid') {
@@ -54,12 +52,12 @@ export class SignUpComponent implements OnInit {
   handleRegistrationMessage(status) {
     switch (status) {
       case 'invalid':
-        this.existentUserMessage = 'invalid';
+        
         this.message = 'Error : E-mail already registered in our database.';
         this.clearErrorMessage(); 
         break;
       case 'valid':
-        this.existentUserMessage = 'valid';
+        
         this.message =
           "Registration successful! Please, wait while you're being redirected...";
         setTimeout(() => {
