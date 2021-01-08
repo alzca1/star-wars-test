@@ -1,10 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { CookieService } from 'ngx-cookie-service';
-
-
 
 import { AppComponent } from './app.component';
 import { SignInComponent } from './sign-in/sign-in.component';
@@ -18,6 +16,7 @@ import { ModalComponent } from './modal/modal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthGuardService } from './services/auth-guard.service';
+import { NewShipComponent } from './ships/new-ship/new-ship.component';
 
 const routes: Routes = [
   {
@@ -44,11 +43,14 @@ const routes: Routes = [
   },
 
   {
-    path: 'ship', 
-    component: ShipComponent
-  }
+    path: 'ship',
+    component: ShipComponent,
+  },
+  {
+    path: 'new-ship',
+    component: NewShipComponent,
+  },
 ];
-
 
 @NgModule({
   declarations: [
@@ -59,8 +61,17 @@ const routes: Routes = [
     ShipsComponent,
     ShipComponent,
     ModalComponent,
+    NewShipComponent,
   ],
-  imports: [BrowserModule, RouterModule.forRoot(routes), HttpClientModule, BrowserAnimationsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(routes),
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+  ],
   providers: [CookieService, AuthGuardService],
   bootstrap: [AppComponent],
 })

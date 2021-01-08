@@ -2,6 +2,7 @@ import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../services/authentication.service';
 import { UserLocalStorageService } from '../services/user-local-storage.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class SignUpComponent implements OnInit {
   existentUserMessage: string;
   signUpForm: FormGroup;
   constructor(
-    private UserLocalStorageService: UserLocalStorageService,
+    private userLocalStorageService: UserLocalStorageService,
+    private authenticationService: AuthenticationService,
     private router: Router
   ) {}
 
@@ -27,7 +29,7 @@ export class SignUpComponent implements OnInit {
         password: new FormControl(null, Validators.required),
       }),
     });
-    this.UserLocalStorageService.$existentUserMessage.subscribe((message) => {
+    this.userLocalStorageService.$existentUserMessage.subscribe((message) => {
       this.existentUserMessage = message;
       this.handleRegistrationMessage(message);
     });
@@ -38,8 +40,10 @@ export class SignUpComponent implements OnInit {
     if (this.message == 'valid') {
       this.signUpForm.reset();
     }
-    this.UserLocalStorageService.createUser(user);
-    console.log(this.message);
+    this.userLocalStorageService.createUser(user);
+    if (this.existentUserMessage === 'valid') {
+      this.authenticationService.setCredentials(user.email, user.password);
+    }
   }
 
   clearErrorMessage() {
@@ -52,12 +56,10 @@ export class SignUpComponent implements OnInit {
   handleRegistrationMessage(status) {
     switch (status) {
       case 'invalid':
-        
         this.message = 'Error : E-mail already registered in our database.';
-        this.clearErrorMessage(); 
+        this.clearErrorMessage();
         break;
       case 'valid':
-        
         this.message =
           "Registration successful! Please, wait while you're being redirected...";
         setTimeout(() => {

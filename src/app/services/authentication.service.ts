@@ -43,7 +43,7 @@ export class AuthenticationService {
   }
 
   checkLoggedIn() {
-    const authData = atob(this.cookieService.get('currentUser')).split(':');
+    let authData = this.getCurrentUser(); 
     const users = this.userLocalStorageService.getUsers();
     for (let user of users) {
       if (
@@ -55,6 +55,10 @@ export class AuthenticationService {
         return true;
       }
     }
-    
+  }
+
+  getCurrentUser(){
+    const authData = atob(this.cookieService.get('currentUser')).split(":"); 
+    return authData; 
   }
 }

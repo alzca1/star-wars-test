@@ -14,7 +14,7 @@ export class UserLocalStorageService {
     let users = this.getUsers();
     console.log(users);
     if (!this.getByEmail(user.email)) {
-      users.push({ ...user, id: this.getId() });
+      users.push({ ...user, id: this.getId(), ships: [] });
       users = JSON.stringify(users);
       this.$existentUserMessage.next('valid')
       return localStorage.setItem('users', users);
@@ -78,5 +78,18 @@ export class UserLocalStorageService {
   getId() {
     const users = this.getUsers();
     return users.length + 1;
+  }
+
+  addShipToUserLocalStorage(userEmail, ship){
+    let users = this.getUsers();
+    let index = 0; 
+    for(let user of users){
+      if(user.email === userEmail){
+        users[index].ships.push(ship)
+        users = JSON.stringify(users)
+        return localStorage.setItem('users', users)
+      }
+      index++;
+    }
   }
 }
