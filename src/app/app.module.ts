@@ -11,7 +11,9 @@ import { HomeComponent } from './home/home.component';
 import { ShipsComponent } from './ships/ships.component';
 import { ShipComponent } from './ships/ship/ship.component';
 import { RouterModule, Routes } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RequestCacheService } from './services/request-cache.service';
+import { CachingInterceptorService } from './services/caching-interceptor.service';
 import { ModalComponent } from './modal/modal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -72,7 +74,7 @@ const routes: Routes = [
     MatInputModule,
     ReactiveFormsModule,
   ],
-  providers: [CookieService, AuthGuardService],
+  providers: [{provide:HTTP_INTERCEPTORS, useClass:CachingInterceptorService, multi:true},CookieService, AuthGuardService, ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
