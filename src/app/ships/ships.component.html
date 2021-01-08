@@ -1,13 +1,32 @@
-
 <div id="ships">
-  <h1>Ships</h1>
+  <div class="page-title">
+    <h1>Ships</h1>
+  </div>
   <app-modal>
     <app-ship [ship]="ship"></app-ship>
   </app-modal>
+  <div class="buttons-container">
+    <button
+      [disabled]="previousUrl === null ? true : false"
+      (click)="onFetchLink(previousUrl)"
+    >
+      Previous
+    </button>
+    <button
+      [disabled]="nextUrl === null ? true : false"
+      (click)="onFetchLink(nextUrl)"
+    >
+      Next
+    </button>
+  </div>
   <div class="ships-container">
-    <div *ngFor="let ship of ships" class="ship-basic" (click)="onShowShipInfo(ship)">
-      <div class="ship-header" >
-        <h5>{{ ship.name }}</h5>
+    <div
+      *ngFor="let ship of ships"
+      class="ship-basic"
+      (click)="onShowShipInfo(ship)"
+    >
+      <div class="ship-header">
+        <span>{{ ship.name }}</span>
       </div>
       <div class="ship-image">
         <img
@@ -17,16 +36,4 @@
       </div>
     </div>
   </div>
-  <button
-    [disabled]="previousUrl === null ? true : false"
-    (click)="onFetchLink(previousUrl)"
-  >
-    Previous
-  </button>
-  <button
-    [disabled]="nextUrl === null ? true : false"
-    (click)="onFetchLink(nextUrl)"
-  >
-    Next
-  </button>
 </div>

@@ -1,0 +1,10 @@
+<div id="navbar">
+  <div class="logo">
+    <img class="logo-image" src="../../assets//images/star_wars_logo.png" />
+  </div>
+  <div class="user-container">
+    <span  [routerLink]="['/signin']" *ngIf="!loginStatus" >Sign In</span>
+    <small  [routerLink]="['/signup']" *ngIf="!loginStatus">Not registered?</small>
+    <span *ngIf="loginStatus" (click)="onLogOut()">Logout</span>
+  </div>
+</div>

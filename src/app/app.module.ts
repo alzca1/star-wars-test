@@ -19,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthGuardService } from './services/auth-guard.service';
 import { NewShipComponent } from './ships/new-ship/new-ship.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 const routes: Routes = [
   {
@@ -64,6 +65,7 @@ const routes: Routes = [
     ShipComponent,
     ModalComponent,
     NewShipComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,

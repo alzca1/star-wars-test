@@ -55,10 +55,17 @@ export class AuthenticationService {
         return true;
       }
     }
+    return false; 
   }
 
   getCurrentUser(){
     const authData = atob(this.cookieService.get('currentUser')).split(":"); 
     return authData; 
+  }
+
+  removeCredentials(){
+    this.cookieService.delete('currentUser');
+    this.$loginStatus.next('invalid')
+    this.router.navigate(['/'])
   }
 }
