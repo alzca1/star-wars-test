@@ -10,43 +10,33 @@ export class ShipsService {
   $shipsChanged = new Subject();
   constructor(private http: HttpClient) {}
 
-  getShips(url?: string) {
+  getShips() {
     let baseUrl = 'https://swapi.dev/api/starships/?page=1';
-    if (url) {
-      baseUrl = url;
-    }
-    let blockPage = baseUrl.split('=')[1];
-    return this.http.get(baseUrl).subscribe(
-      (response) => {
-        this.ships.push({ ...response, page: blockPage });
-        this.$shipsChanged.next(response);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    return this.http.get(baseUrl);
+  }
+
+  UpdateShipsList(url) {
+    this.http.get(url).subscribe((response) => {
+      this.$shipsChanged.next(response);
+    });
   }
 
   fetchLink(url) {
     const page = url.split('=')[1];
-    for (let block of this.ships) {
-      if (block.page === page) {
-        return this.$shipsChanged.next(block);
-      }
-    }
-    this.getShips(url);
+    const newUrl = `https://swapi.dev/api/starships/?page=${page}`;
+    this.UpdateShipsList(newUrl);
   }
 
-  fetchImageLink(url){
+  fetchImageLink(url) {
     const id = url
-    .split('/')
-    .filter((item) => {
-      return item !== '';
-    })
-    .slice(-1)[0];
+      .split('/')
+      .filter((item) => {
+        return item !== '';
+      })
+      .slice(-1)[0];
 
-  let baseUrl = `https://starwars-visualguide.com/assets/img/starships/${id}.jpg`;
+    let baseUrl = `https://starwars-visualguide.com/assets/img/starships/${id}.jpg`;
 
-  return baseUrl;
+    return baseUrl;
   }
 }

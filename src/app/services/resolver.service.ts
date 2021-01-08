@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { ShipsService } from './ships.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ResolverService implements Resolve<any> {
 
   constructor(private shipsService: ShipsService) { }

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ModalService } from '../services/modal.service';
 import { ShipsService } from '../services/ships.service';
 
@@ -8,15 +9,24 @@ import { ShipsService } from '../services/ships.service';
   styleUrls: ['./ships.component.scss'],
 })
 export class ShipsComponent implements OnInit {
-  @Input() ship: any; 
+  @Input() ship: any;
+
   ships = [];
   nextUrl: string;
   previousUrl: string;
-  constructor(private shipsService: ShipsService, private modalService: ModalService) {}
+  constructor(
+    private shipsService: ShipsService,
+    private modalService: ModalService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.shipsService.getShips();
-    this.shipsService.$shipsChanged.subscribe((response: any) => {
+    this.shipsService.getShips().subscribe((response) => {
+      this.ships = response.results;
+      this.nextUrl = response.next;
+      this.previousUrl = response.previous;
+    });
+    this.shipsService.$shipsChanged.subscribe((response) => {
       this.ships = response.results;
       this.nextUrl = response.next;
       this.previousUrl = response.previous;
@@ -27,13 +37,13 @@ export class ShipsComponent implements OnInit {
     this.shipsService.fetchLink(url);
   }
 
-  onShowShipInfo(ship){
-    this.ship = ship; 
+  onShowShipInfo(ship) {
+    this.ship = ship;
     this.modalService.toggleModal();
   }
 
   onFetchImageLink(url) {
-    return this.shipsService.fetchImageLink(url)
+    return this.shipsService.fetchImageLink(url);
   }
 
   // onFetchImageLink(url){

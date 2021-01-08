@@ -33,6 +33,7 @@ export class AuthenticationService {
       this.$loginStatus.next('invalid');
       return;
     }
+    console.log(users)
 
     for (let user of users) {
       if (user.email === email && user.password === password) {
@@ -71,6 +72,7 @@ export class AuthenticationService {
 
   removeCredentials() {
     this.$loginStatus.next('invalid');
+    console.log('set status invalid')
     this.cookieService.deleteAll('/');
     this.router.navigateByUrl('');
   }
