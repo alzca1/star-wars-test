@@ -1,7 +1,7 @@
 import { HttpRequest, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-const maxAge = 30000;
+const maxAge = 300000;
 
 @Injectable({
   providedIn: 'root',
@@ -13,12 +13,11 @@ export class RequestCacheService {
     const url = req.urlWithParams;
     const cached = this.cache.get(url);
     if (!cached) {
-      console.log('not cached')
       return undefined;
     }
+
     const isExpired = cached.lastRead < Date.now() - maxAge;
     const expired = isExpired ? 'expired' : '';
-    console.log('returning cached response')
     return cached.response;
   }
 
@@ -30,7 +29,6 @@ export class RequestCacheService {
     const expired = Date.now() - maxAge;
     this.cache.forEach((expiredEntry) => {
       if (expiredEntry.lastRead < expired) {
-        console.log('deleting', expiredEntry.url)
         this.cache.delete(expiredEntry.url);
       }
     });
