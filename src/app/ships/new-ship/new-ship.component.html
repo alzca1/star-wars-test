@@ -1,0 +1,247 @@
+<div id="new-ship">
+  <div class="form-container">
+    <h1>New Ship</h1>
+    <form [formGroup]="newShipForm" (ngSubmit)="onSubmit()">
+      <div class="input-container">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          id="name"
+          class="form-control"
+          formControlName="name"
+        />
+        <small
+          *ngIf="
+            !newShipForm.get('name').valid && newShipForm.get('name').touched
+          "
+        >
+          Please, provide a name
+        </small>
+      </div>
+      <div class="input-container">
+        <label for="model">Model</label>
+        <input
+          type="text"
+          id="model"
+          class="form-control"
+          formControlName="model"
+        />
+        <small
+          *ngIf="
+            !newShipForm.get('model').valid && newShipForm.get('model').touched
+          "
+        >
+          Please, provide a model name
+        </small>
+      </div>
+      <div class="input-container">
+        <label for="starship_class">Starship class</label>
+        <input
+          type="text"
+          id="starship_class"
+          class="form-control"
+          formControlName="starship_class"
+        />
+        <small
+          *ngIf="
+            !newShipForm.get('starship_class').valid &&
+            newShipForm.get('starship_class').touched
+          "
+        >
+          Please, provide a starship class
+        </small>
+      </div>
+      <div class="input-container">
+        <label for="manufacturer">Manufacturer</label>
+        <input
+          type="text"
+          id="manufacturer"
+          class="form-control"
+          formControlName="manufacturer"
+        />
+        <small
+          *ngIf="
+            !newShipForm.get('manufacturer').valid &&
+            newShipForm.get('manufacturer').touched
+          "
+        >
+          Please, provide a manufacturer name
+        </small>
+      </div>
+      <div class="input-container">
+        <label for="cost_in_credits">Cost in credits</label>
+        <input
+          type="number"
+          id="cost_in_credits"
+          class="form-control"
+          formControlName="cost_in_credits"
+        />
+        <small
+          *ngIf="
+            !newShipForm.get('cost_in_credits').valid &&
+            newShipForm.get('cost_in_credits').touched
+          "
+        >
+          Please, provide a cost in credits
+        </small>
+      </div>
+
+      <div class="input-container">
+        <label for="length">Length</label>
+        <input
+          type="number"
+          id="length"
+          class="form-control"
+          formControlName="length"
+        />
+        <small
+          *ngIf="
+            !newShipForm.get('length').valid &&
+            newShipForm.get('length').touched
+          "
+        >
+          Please, provide a length number
+        </small>
+      </div>
+
+      <div class="input-container">
+        <label for="crew">Crew</label>
+        <input
+          type="number"
+          id="crew"
+          class="form-control"
+          formControlName="crew"
+        />
+        <small
+          *ngIf="
+            !newShipForm.get('crew').valid && newShipForm.get('crew').touched
+          "
+        >
+          Please, provide a crew number
+        </small>
+      </div>
+      <div class="input-container">
+        <label for="passengers">Passengers</label>
+        <input
+          type="number"
+          id="passengers"
+          class="form-control"
+          formControlName="passengers"
+        />
+        <small
+          *ngIf="
+            !newShipForm.get('passengers').valid &&
+            newShipForm.get('passengers').touched
+          "
+        >
+          Please, provide a passengers number
+        </small>
+      </div>
+
+      <div class="input-container">
+        <label for="max_atmosphering_speed">Max. atmosphering speed</label>
+        <input
+          type="number"
+          id="max_atmosphering_speed"
+          class="form-control"
+          formControlName="max_atmosphering_speed"
+        />
+        <small
+          *ngIf="
+            !newShipForm.get('max_atmosphering_speed').valid &&
+            newShipForm.get('max_atmosphering_speed').touched
+          "
+        >
+          Please, provide a max atmosphering speed
+        </small>
+      </div>
+      <div class="input-container">
+        <label for="hyperdrive_rating">Hyperdrive rating</label>
+        <input
+          type="number"
+          id="hyperdrive_rating"
+          class="form-control"
+          formControlName="hyperdrive_rating"
+        />
+        <small
+          *ngIf="
+            !newShipForm.get('hyperdrive_rating').valid &&
+            newShipForm.get('hyperdrive_rating').touched
+          "
+        >
+          Please, provide a hyperdrive rating number
+        </small>
+      </div>
+      <div class="input-container">
+        <label for="MGLT">MGLT</label>
+        <input
+          type="number"
+          id="MGLT"
+          class="form-control"
+          formControlName="MGLT"
+        />
+        <small
+          *ngIf="
+            !newShipForm.get('MGLT').valid && newShipForm.get('MGLT').touched
+          "
+        >
+          Please, provide a MGLT number
+        </small>
+      </div>
+      <div class="input-container">
+        <label for="cargo_capacity">Cargo capacity</label>
+        <input
+          type="number"
+          id="cargo_capacity"
+          class="form-control"
+          formControlName="cargo_capacity"
+        />
+        <small
+          *ngIf="
+            !newShipForm.get('cargo_capacity').valid &&
+            newShipForm.get('cargo_capacity').touched
+          "
+        >
+          Please, provide a cargo capacity number
+        </small>
+      </div>
+      <div class="input-container">
+        <label for="consumables">Consumables</label>
+        <input
+          type="number"
+          id="consumables"
+          class="form-control"
+          formControlName="consumables"
+        />
+        <small
+          *ngIf="
+            !newShipForm.get('consumables').valid &&
+            newShipForm.get('consumables').touched
+          "
+        >
+          Please, provide a consumables number
+        </small>
+      </div>
+      <div class="input-container">
+        <label for="image">Image</label>
+        <input
+          type="number"
+          id="image"
+          class="form-control"
+          formControlName="image"
+        />
+        <small
+          *ngIf="
+            !newShipForm.get('image').valid &&
+            newShipForm.get('image').touched
+          "
+        >
+          Please, provide an image link
+        </small>
+      </div>
+      <div class="buttons-container">
+        <button>Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

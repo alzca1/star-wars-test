@@ -15,6 +15,7 @@ export class ShipsComponent implements OnInit {
   constructor(private shipsService: ShipsService, private modalService: ModalService) {}
 
   ngOnInit(): void {
+    this.shipsService.getShips();
     this.shipsService.$shipsChanged.subscribe((response: any) => {
       this.ships = response.results;
       this.nextUrl = response.next;
