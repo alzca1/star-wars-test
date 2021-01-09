@@ -30,7 +30,7 @@
       </div>
       <div class="ship-image">
         <img
-          src="{{ onFetchImageLink(ship.url) }}"
+          src="{{ship.url? onFetchImageLink(ship.url) : onFetchImageLink(ship.image) }}"
           onerror="this.src='assets/images/no-picture.png'"
         />
       </div>

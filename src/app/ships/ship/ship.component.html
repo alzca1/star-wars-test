@@ -2,7 +2,7 @@
   <div class="ship-details">
     <div class="level-class">
       <div class="model-image">
-        <img src="{{ onFetchImageLink(ship.url) }}" onerror="this.src='assets/images/no-picture.png'" />
+        <img src="{{ ship.url?  onFetchImageLink(ship.url) :  onFetchImageLink(ship.image) }}" onerror="this.src='assets/images/no-picture.png'" />
       </div>
       <div class="capacity-details">
         <span class="title-span">Capacity details</span>

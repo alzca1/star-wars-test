@@ -12,6 +12,7 @@ export class ShipsComponent implements OnInit {
   @Input() ship: any;
 
   ships = [];
+  userShips; 
   nextUrl: string;
   previousUrl: string;
   constructor(
@@ -21,16 +22,20 @@ export class ShipsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.userShips = this.shipsService.fetchUserShips()
     this.shipsService.getShips().subscribe((response) => {
       this.ships = response.results;
       this.nextUrl = response.next;
       this.previousUrl = response.previous;
     });
+    this.onIncludeCustomShips(this.ships, this.userShips);
+      console.log(this.ships)
     this.shipsService.$shipsChanged.subscribe((response) => {
       this.ships = response.results;
       this.nextUrl = response.next;
       this.previousUrl = response.previous;
     });
+    this.shipsService.fetchUserShips()
   }
 
   onFetchLink(url) {
@@ -46,6 +51,9 @@ export class ShipsComponent implements OnInit {
     return this.shipsService.fetchImageLink(url);
   }
 
+  onIncludeCustomShips(shipsArray, customShips){
+    this.shipsService.includeCustomShips(shipsArray,customShips)
+  }
   // onFetchImageLink(url){
   //   this.shipsService.fetchImageLink(url)
   // }

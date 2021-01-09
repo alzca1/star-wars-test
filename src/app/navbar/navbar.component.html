@@ -1,10 +1,23 @@
 <div id="navbar">
   <div class="logo">
-    <img class="logo-image" src="../../assets//images/star_wars_logo.png" />
+    <img class="logo-image" src="../../assets/images/star_wars_logo.png" />
   </div>
   <div class="user-container">
-    <span  [routerLink]="['/signin']" *ngIf="!loginStatus" >Sign In</span>
-    <small  [routerLink]="['/signup']" *ngIf="!loginStatus">Not registered?</small>
-    <span *ngIf="loginStatus" (click)="onLogOut()">Logout</span>
+    <div class="unlogged-user">
+      <span [routerLink]="['/signin']" *ngIf="!loginStatus">Sign In</span>
+      <small [routerLink]="['/signup']" *ngIf="!loginStatus"
+        >Not registered?</small
+      >
+    </div>
+    <div class="logged-user" *ngIf="loginStatus">
+      <div class="circle" (click)="toggleUserMenu()">
+        <span>A</span>
+      </div>
+      <div class="user-menu" *ngIf="userMenuIsActive">
+        <span [routerLink]="['/ships']">My Ships</span>
+        <span [routerLink]="['/new-ship']">Add ship</span>
+        <span (click)="onLogOut()">Logout</span>
+      </div>
+    </div>
   </div>
 </div>

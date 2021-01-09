@@ -8,9 +8,11 @@ import { AuthenticationService } from '../services/authentication.service';
 })
 export class NavbarComponent implements OnInit {
   loginStatus: boolean;
+  userMenuIsActive: boolean; 
   constructor(private authenticationService: AuthenticationService) {}
 
   ngOnInit(): void {
+    this.userMenuIsActive = false; 
     this.authenticationService.$loginStatus.subscribe((status) => {
       switch (status) {
         case 'valid':
@@ -26,5 +28,9 @@ export class NavbarComponent implements OnInit {
 
   onLogOut() {
     this.authenticationService.removeCredentials();
+  }
+
+  toggleUserMenu(){
+    this.userMenuIsActive = !this.userMenuIsActive; 
   }
 }
