@@ -10,6 +10,8 @@
   width: 100px;
   margin: 5px 15px 0 15px;
   position: relative;
+  cursor: pointer; 
+  outline: none; 
 }
 
 #navbar .logo img {
@@ -35,6 +37,7 @@
   align-items: center;
   justify-content: flex-end;
   
+  
 }
 
 #navbar .user-container .unlogged-user span {
@@ -42,6 +45,8 @@
   font-size: 1.1rem;
   transition: color 0.3s ease-in;
   margin: 0 15px;
+  outline: none; 
+  cursor: pointer; 
 }
 
 #navbar .user-container .unlogged-user small {
@@ -50,6 +55,8 @@
   color: #944b5a;
   cursor: pointer;
   transition: color 0.3s ease-in;
+  outline: none; 
+  cursor: pointer; 
 }
 
 #navbar .user-container .unlogged-user small:hover {
