@@ -33,7 +33,6 @@ export class ShipsService {
   }
 
   fetchImageLink(url) {
-    console.log(url.includes('swapi'))
     if (url.includes('swapi')) {
       const id = url
         .split('/')
@@ -64,7 +63,6 @@ export class ShipsService {
   }
 
   includeCustomShips(shipsArray, customShipsArray) {
-    console.log('hello', customShipsArray);
     if (customShipsArray.length > 0) {
       customShipsArray.map((element) => {
         shipsArray.push(element);

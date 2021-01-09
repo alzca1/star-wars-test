@@ -10,10 +10,10 @@
       >
     </div>
     <div class="logged-user" *ngIf="loginStatus">
-      <div class="circle" (click)="toggleUserMenu()">
-        <span>A</span>
+      <div class="circle" (click)="toggleUserMenu($event)">
+        <span class="swg swg-darthvader"></span>
       </div>
-      <div class="user-menu" *ngIf="userMenuIsActive">
+      <div class="user-menu" *ngIf="userMenuIsActive"  >
         <span [routerLink]="['/ships']">My Ships</span>
         <span [routerLink]="['/new-ship']">Add ship</span>
         <span (click)="onLogOut()">Logout</span>
